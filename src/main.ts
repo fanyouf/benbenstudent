@@ -4,7 +4,10 @@ import router from './router'
 import store from './store'
 import '@/style/index.less'
 
+import axios from '@/utils/request.ts'
+
 const app = createApp(App)
+app.config.globalProperties.$http = axios
 const requireComponent = require.context(
   // 其组件目录的相对路径
   './components/ui',
@@ -13,7 +16,7 @@ const requireComponent = require.context(
   // 匹配基础组件文件名的正则表达式
   /[A-Z]\w+\.(vue|js)$/
 )
-console.log('requireComponent', requireComponent.keys())
+// console.log('requireComponent', requireComponent.keys())
 
 requireComponent.keys().forEach(fileName => {
   // 获取组件配置

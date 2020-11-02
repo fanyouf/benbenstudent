@@ -13,7 +13,7 @@
       </ul>
     </div>
     <div>
-      <component v-bind:is="currentTabComponent"></component>
+      <component v-bind:is="currentTabComponent" :video="video"></component>
     </div>
   </div>
 </template>
@@ -28,9 +28,15 @@ export default defineComponent({
   name: 'Course',
   data () {
     return {
+      video: {},
       currentTab: 'note',
       tabs: ['note', 'task', 'comment', 'source']
     }
+  },
+  async created () {
+    const res = await this.$http.get('video/' + this.$route.params.id)
+    console.log(res)
+    this.video = res.data.video
   },
   computed: {
     currentTabComponent: function () {

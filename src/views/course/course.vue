@@ -3,29 +3,31 @@
     <BoxTitle>课程介绍</BoxTitle>
     <div>
       <div class="course-description course-wrap">
-        简介：本课程使用目前最主流的MySQL8进行教学，主要学习操作数据库的SQL语句语法：DDL，DML以及DQL分组，分页，范围，排序等条件查询的使用以及Navicat连接工具的操作、数据库的主键，唯一，非空约束等
+        {{couDesc}}
       </div>
       <BoxTitle>章节</BoxTitle>
       <div class="course-chapters">
         <div class="chapter course-wrap">
           <!-- 章节小节 -->
           <ul class="video">
-            <li class="video-item">
-              <span class="video-title">1-1 搭建 Egg.js 的开发环境 (05:54)</span>
+            <li class="video-item"
+            v-for="video in videos"
+            :key="video.id">
+              <span class="video-title">{{video.vidName}}</span>
 
               <div>80%</div>
               <i class="iconfont icon-doc" title="讲义"></i>
-              <i class="iconfont icon-play" @click.prevent="$router.push('/video/1')" title="视频"></i>
+              <i class="iconfont icon-play" @click.prevent="$router.push('/video/' + video.id)" title="视频"></i>
               <i class="iconfont icon-task" title="测试"></i>
             </li>
-            <li class="video-item">
+            <!-- <li class="video-item">
               <span class="video-title">1-1 搭建 Egg.js 的开发环境 (05:54)</span>
 
               <div>完成度80%</div>
               <i class="iconfont icon-doc" title="讲义"></i>
               <i class="iconfont icon-play" @click.prevent="$router.push('/video/1')" title="视频"></i>
               <i class="iconfont icon-task" title="测试"></i>
-            </li>
+            </li> -->
 
           </ul>
           <!-- 章节小节 end -->
@@ -35,11 +37,22 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Course',
-  components: {}
+  data () {
+    return {
+      couDesc: '',
+      videos: []
+    }
+  },
+  async created () {
+    const res = await this.$http.get('course/' + this.$route.params.id)
+    console.log(res)
+    this.couDesc = res.data.couDesc
+    this.videos = res.data.videos
+  }
 })
 </script>
 

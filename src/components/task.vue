@@ -1,6 +1,7 @@
 <template>
   <div class="tasks">
     <box-title>课程检测</box-title>
+    {{list.code}}
     <div class="task" v-for="task in taskes" :key="task">
         <tsc :stc="task"/>
     </div>
@@ -8,7 +9,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import axios from 'axios'
+import { defineComponent, ref } from 'vue'
 import tsc from './taskSingleChoice.vue'
 export default defineComponent({
   name: 'Task',
@@ -27,6 +29,13 @@ export default defineComponent({
   },
   components: {
     tsc
+  },
+  setup () {
+    const list = ref({})
+    axios.get('https://api.apiopen.top/singlePoetry').then(res => {
+      list.value = res.data
+    })
+    return { list }
   }
 })
 </script>
