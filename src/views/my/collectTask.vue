@@ -1,5 +1,5 @@
 <template>
-  <div>error</div>
+  <div>收藏的练习</div>
 </template>
 
 <script>

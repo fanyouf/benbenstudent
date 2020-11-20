@@ -16,22 +16,25 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, reactive, toRefs } from 'vue'
 
 export default defineComponent({
   name: 'Home',
   data () {
     return {
-      list: []
+
     }
   },
-  setup (context) {
-    console.log(context)
-  },
-  async created () {
-    const res = await this.$http.get('courses')
-    console.log(res)
-    this.list = res.data.courses
+  setup () {
+    const res = reactive({
+      list: [{ id: 1, name: 'test' }]
+    })
+    return { ...toRefs(res) }
   }
+  // async created () {
+  //   const res = await this.$http.get('courses')
+  //   console.log(res)
+  //   this.list = res.data.courses
+  // }
 })
 </script>

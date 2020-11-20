@@ -1,12 +1,13 @@
 <template>
-  <div class="my">
+  <div class="my" style="margin-top:20px">
     <div class="menu">
       <router-link class="menu-item" to="/m/profile">个人中心</router-link>
-      <router-link class="menu-item" to="/m/collect">收藏</router-link>
-      <router-link class="menu-item" to="/m/collect">收藏</router-link>
+      <router-link class="menu-item" to="/m/skillTree">技能树</router-link>
+      <router-link class="menu-item" to="/m/collectNote">收藏文章</router-link>
+      <router-link class="menu-item" to="/m/collectTask">收藏练习</router-link>
       <router-link class="menu-item" to="/m/error">错题集</router-link>
     </div>
-    <div class="main">
+    <div class="main p20">
       <router-view></router-view>
     </div>
   </div>

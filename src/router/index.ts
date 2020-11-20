@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../views/home/home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -32,6 +32,22 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import(/* webpackChunkName: "course" */ '../views/course/course.vue')
       },
       {
+        path: '/note/:id',
+        name: 'note',
+        component: () => import(/* webpackChunkName: "note" */ '../views/note/note.vue')
+      },
+      {
+        path: '/task/:id',
+        name: 'task',
+        component: () => import(/* webpackChunkName: "task" */ '../views/task/task.vue')
+      },
+      {
+        path: '/taskresult',
+        name: 'taskresult',
+        component: () => import(/* webpackChunkName: "taskresult" */ '../views/task/taskResult.vue')
+      },
+
+      {
         name: 'my',
         path: '/m',
         component: () => import(/* webpackChunkName: "my" */ '../views/my/my.vue'),
@@ -49,13 +65,18 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import(/* webpackChunkName: "process" */ '../views/my/process.vue')
           },
           {
-            path: '/m/collect',
-            component: () => import(/* webpackChunkName: "collect" */ '../views/my/collect.vue')
+            path: '/m/collectNote',
+            component: () => import(/* webpackChunkName: "collectNote" */ '../views/my/collectNote.vue')
           },
           {
-            path: '/m/error',
-            component: () => import(/* webpackChunkName: "error" */ '../views/my/error.vue')
+            path: '/m/skilltree',
+            component: () => import(/* webpackChunkName: "error" */ '../views/my/skillTree.vue')
+          },
+          {
+            path: '/m/collectTask',
+            component: () => import(/* webpackChunkName: "collectTask" */ '../views/my/collectTask.vue')
           }
+
         ]
       }
     ]

@@ -1,5 +1,10 @@
 <template>
   <div class="course-page">
+    <nav>
+      <router-link to="/">主页</router-link> >
+      <router-link to="/subject/1">技能树</router-link> >
+      javascrtip入门
+    </nav>
     <BoxTitle>课程介绍</BoxTitle>
     <div>
       <div class="course-description course-wrap">
@@ -13,12 +18,11 @@
             <li class="video-item"
             v-for="video in videos"
             :key="video.id">
-              <span class="video-title">{{video.vidName}}</span>
-
-              <div>80%</div>
-              <i class="iconfont icon-doc" title="讲义"></i>
-              <i class="iconfont icon-play" @click.prevent="$router.push('/video/' + video.id)" title="视频"></i>
-              <i class="iconfont icon-task" title="测试"></i>
+              <router-link class="video-title" :to="'/video/'+ video.id">{{video.vidName}}</router-link>
+              <div>当前学习进度80%</div>
+              <course-process></course-process>
+              <router-link :to="'/note/' + video.id"><i class="iconfont icon-doc"></i>3003字</router-link>
+              <router-link :to="'/task/' + video.id"><i class="iconfont icon-task"></i>5题</router-link>
             </li>
             <!-- <li class="video-item">
               <span class="video-title">1-1 搭建 Egg.js 的开发环境 (05:54)</span>
@@ -39,30 +43,26 @@
 
 <script>
 import { defineComponent } from 'vue'
+import useCourse from './useCourse'
 export default defineComponent({
   name: 'Course',
   data () {
-    return {
-      couDesc: '',
-      videos: []
-    }
+    return {}
   },
-  async created () {
-    const res = await this.$http.get('course/' + this.$route.params.id)
-    console.log(res)
-    this.couDesc = res.data.couDesc
-    this.videos = res.data.videos
+  setup () {
+    const { couDesc, videos } = useCourse()
+    return { couDesc, videos }
   }
 })
 </script>
 
 <style lang="less" scoped>
 .course-wrap {
-    margin-bottom: 8px;
-    padding: 24px 32px 32px;
-    background: #fff;
-    box-shadow: 0 8px 16px 0 rgba(7,17,27,.1);
-    border-radius: 12px;
+  margin-bottom: 8px;
+  padding: 24px 32px 32px;
+  background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
 }
 .course-chapters .chapter h3 {
     color: #1c1f21;
@@ -79,7 +79,9 @@ export default defineComponent({
 .course-chapters .chapter .video {
     padding-top: 16px;
     .video-item{
+      padding-right:1em;
       display: flex;
+      align-items: center;
       .video-title{
         margin-right: auto;
       }

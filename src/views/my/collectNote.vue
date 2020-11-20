@@ -1,5 +1,5 @@
 <template>
-  <div>收藏</div>
+  <div>收藏的文章</div>
 </template>
 
 <script>

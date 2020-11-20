@@ -20,7 +20,7 @@
 
 <script>
 import TabNote from '@/components/note.vue'
-import TabTask from '@/components/task.vue'
+import TabTask from '@/views/task/task.vue'
 import TabComment from '@/components/comment.vue'
 import TabSource from '@/components/source.vue'
 import { defineComponent } from 'vue'

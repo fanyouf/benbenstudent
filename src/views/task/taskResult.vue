@@ -1,9 +1,14 @@
 <template>
   <div class="tasks">
-    <box-title>课程检测</box-title>
-    {{list.code}}
+    <box-title>结果</box-title>
+
     <div class="task" v-for="task in taskes" :key="task">
-        <tsc :stc="task"/>
+      <tsc :stc="task"/>
+      <div>
+        <p>回答: 正确</p>
+        <p>回答: 错误，正确答案是：XX</p>
+        解析：xxxxxxxx
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +50,8 @@ export default defineComponent({
   margin: 5px 0px;
   padding: 20px;
   background: #fff;
-  box-shadow: 0 4px 8px 0 rgba(7,17,27,.1);
-  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
 }
 </style>
