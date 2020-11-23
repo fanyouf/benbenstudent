@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["collectTask"],{c416:function(n,c,e){"use strict";e.r(c);var t=e("7a23");function o(n,c,e,o,r,a){return Object(t["o"])(),Object(t["d"])("div",null,"收藏的练习")}var r={};r.render=o;c["default"]=r}}]);
+//# sourceMappingURL=collectTask.6ba9b98b.js.map

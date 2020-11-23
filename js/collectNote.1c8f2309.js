@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["collectNote"],{4774:function(e,n,t){"use strict";t.r(n);var c=t("7a23");function o(e,n,t,o,r,u){return Object(c["o"])(),Object(c["d"])("div",null,"收藏的文章")}var r={};r.render=o;n["default"]=r}}]);
+//# sourceMappingURL=collectNote.1c8f2309.js.map
