@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import TabNote from '@/components/note.vue'
+/* eslint-disable vue/no-unused-components */
+import TabNote from '@/views/note/note.vue'
 import TabTask from '@/views/task/task.vue'
 import TabComment from '@/components/comment.vue'
 import TabSource from '@/components/source.vue'
-import { defineComponent } from 'vue'
-export default defineComponent({
-  name: 'Course',
+export default ({
+  name: 'Video',
   data () {
     return {
       video: {},
@@ -33,11 +33,11 @@ export default defineComponent({
       tabs: ['note', 'task', 'comment', 'source']
     }
   },
-  async created () {
-    const res = await this.$http.get('video/' + this.$route.params.id)
-    console.log(res)
-    this.video = res.data.video
-  },
+  // async created () {
+  //   const res = await this.$http.get('video/' + this.$route.params.id)
+  //   console.log(res)
+  //   this.video = res.data.video
+  // },
   computed: {
     currentTabComponent: function () {
       return 'tab-' + this.currentTab.toLowerCase()
